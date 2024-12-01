@@ -1,2 +1,49 @@
 # EmbedBot
-a super chill bot that makes embeds a bit easier to make
+
+This is a Discord bot designed to manage support tickets within a server. It allows users to create tickets, staff members to claim and close tickets, and provides a form system for users to submit their issues.
+
+## Features
+
+- **Ticket Creation**: Users can create support tickets that are categorized and managed.
+- **Ticket Management**: Staff members can claim and close tickets, with appropriate permissions.
+- **Form System**: Users can fill out forms to describe their issues, which can be reviewed by staff.
+- **Embed Messages**: The bot can send rich embed messages with buttons for interaction.
+- **DM Notifications**: Users receive direct messages for form submissions and ticket updates.
+
+## Requirements
+
+- Python 3.8 or higher
+- `discord.py` library (version 2.0 or higher)
+- A Discord bot (obviously)
+
+## Installation
+
+1. Download the 'main.py' file
+
+2. Make sure to install all of the packages
+
+3. Make sure to change some of the variables or the bot will not work!:
+   ```python
+   discord_bot_token = 'YOUR_BOT_TOKEN'
+   guild_id = YOUR_GUILD_ID
+   staff_channel_id = YOUR_STAFF_CHANNEL_ID
+   ```
+
+## Usage
+
+1. Run the bot:
+   ```bash
+   python main.py
+   ```
+
+2. Invite the bot to your server using the OAuth2 URL with the necessary permissions.
+
+3. Use the following commands in your Discord server:
+   - `/form make`: Start recording a new form.
+   - `/form finish`: Submit the recorded form.
+   - `/form [form_name]`: Fill out an existing form.
+   - `/embed [title] | [description] | [color] | [fields/buttons]`: Create and send an embed message.
+
+## Contributing
+
+Contributions would be awesome, unless your name is: 'Derry k. Tutt,' because if that's the case then go away!
