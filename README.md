@@ -44,6 +44,14 @@ This is a Discord bot designed to manage support tickets within a server. It all
    - `/form [form_name]`: Fill out an existing form.
    - `/embed [title] | [description] | [color] | [fields/buttons]`: Create and send an embed message.
 
+## Example Code
+```python
+/embed Tickets 🎟️ | Press the button to make a ticket! | 255, 255, 0 | field=Ban Appeal, We rarely unban people so don't expect anything! | button=Ban Appeal/Staff Application, red, intention=form | button=Make A Ticket, blue, intention=make_priv_channel
+```
+# Code result:
+![EmbedBot](https://github.com/user-attachments/assets/6829a01c-4dcb-442b-854f-7d4e4c7c6bf4)
+
+
 ## Contributing
 
 Contributions would be awesome, unless your name is: 'Derry k. Tutt,' because if that's the case then go away!
