@@ -2,27 +2,17 @@ from discord import Intents, Message, Embed, Color, ui, ButtonStyle, PermissionO
 from datetime import datetime, timedelta
 from typing import Dict, List
 from discord.ext import commands
-
-try:
-    from personal_info import *
-except:
-    pass
-# THIS WILL NOT EXPLODE YOUR PC! ITS JUST BECAUSE I DONT WANNA SHARE *MY* INFO
+import EDIT_ME
 
 intents: Intents = Intents.default()
 intents.message_content = True
 client: commands.Bot = commands.Bot(command_prefix='/', intents=intents)
 
-staff_role_ = 'STAFF' # Replace this
-ticket_channel_category = '#TICKETS' # Replace this
 staff_recording: Dict[int, List[str]] = {}
 is_recording: Dict[int, bool] = {} 
 saved_forms: Dict[str, List[str]] = {} 
 pending_forms: Dict[int, List[str]] = {}
 user_responses: Dict[int, Dict[str, List[str]]] = {}
-staff_channel_id = 0 # Replace this
-guild_id = 0 # Replace this
-discord_bot_token = 0 # Replace this
 
 class TicketButtons(ui.View):
     def __init__(self):
@@ -34,7 +24,7 @@ class TicketButtons(ui.View):
             if "ticket-" in interaction.channel.name:
                 closed_category = utils.get(interaction.guild.categories, name="closed-tickets")
                 if not closed_category:
-                    staff_role = utils.get(interaction.guild.roles, name=staff_role_)
+                    staff_role = utils.get(interaction.guild.roles, name=EDIT_ME.staff_role_)
                     overwrites = {
                         interaction.guild.default_role: PermissionOverwrite(read_messages=False),
                         interaction.guild.me: PermissionOverwrite(read_messages=True, send_messages=True),
@@ -66,7 +56,7 @@ class TicketButtons(ui.View):
     @ui.button(label="Claim Ticket", style=ButtonStyle.green)
     async def claim_ticket(self, interaction: Interaction, button: ui.Button):
         try:
-            staff_role = utils.get(interaction.guild.roles, name=staff_role_)
+            staff_role = utils.get(interaction.guild.roles, name=EDIT_ME.staff_role_)
             if staff_role not in interaction.user.roles:
                 error_embed = Embed(
                     title="Permission Denied",
@@ -530,7 +520,7 @@ async def on_ready() -> None:
 @client.command(name='form')
 async def form_command(ctx, action: str, *args):
     if action.lower() == 'make':
-        staff_role = utils.get(ctx.guild.roles, name=staff_role_)
+        staff_role = utils.get(ctx.guild.roles, name=EDIT_ME.staff_role_)
         if staff_role not in ctx.author.roles:
             error_embed = Embed(
                 title="Permission Denied",
@@ -578,8 +568,8 @@ async def form_command(ctx, action: str, *args):
                         inline=False
                     )
 
-                guild = client.get_guild(guild_id)
-                staff_channel = guild.get_channel(staff_channel_id)
+                guild = client.get_guild(EDIT_ME.guild_id)
+                staff_channel = guild.get_channel(EDIT_ME.staff_channel_id)
                 
                 if staff_channel:
                     await staff_channel.send(
@@ -699,7 +689,7 @@ async def test_command(ctx):
     await ctx.send("The bot is working!")
 
 def main() -> None:
-    client.run(discord_bot_token)
+    client.run(EDIT_ME.discord_bot_token)
 
 if __name__ == '__main__':
     main()
