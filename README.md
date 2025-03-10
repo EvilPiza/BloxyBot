@@ -1,4 +1,4 @@
-# EmbedBot
+# BloxyBot
 
 This is a Discord bot designed to manage support tickets within a server. It allows users to create tickets, staff members to claim and close tickets, and provides a form system for users to submit their issues.
 
