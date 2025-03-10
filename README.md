@@ -18,15 +18,17 @@ This is a Discord bot designed to manage support tickets within a server. It all
 
 ## Installation
 
-1. Download the 'main.py' file
+1. Download the 'main.py,' and 'EDIT_ME.py' files
 
 2. Make sure to install all of the packages
 
-3. Make sure to change some of the variables or the bot will not work!:
+3. Make sure to change all of the variables in 'EDIT_ME.py' or the bot will not work!:
    ```python
-   discord_bot_token = 'YOUR_BOT_TOKEN'
-   guild_id = YOUR_GUILD_ID
-   staff_channel_id = YOUR_STAFF_CHANNEL_ID
+   staff_channel_id = 0
+   guild_id = 0
+   discord_bot_token = 0
+   staff_role_ = 'STAFF'
+   ticket_channel_category = '#TICKETS'
    ```
 
 ## Usage
