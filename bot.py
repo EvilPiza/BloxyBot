@@ -28,7 +28,7 @@ class TicketButtons(ui.View):
                     overwrites = {
                         interaction.guild.default_role: PermissionOverwrite(read_messages=False),
                         interaction.guild.me: PermissionOverwrite(read_messages=True, send_messages=True),
-                        staff_role: PermissionOverwrite(read_messages=True, send_messages=True) if staff_role else None
+                        _role: PermissionOverwrite(read_messages=True, send_messages=True) if _role else None
                     }
                     closed_category = await interaction.guild.create_category("closed-tickets", overwrites=overwrites)
 
@@ -239,9 +239,9 @@ class Buttons(ui.View):
                     await interaction.response.send_message(embed=channel_embed, ephemeral=True)
                     return
 
-                tickets_category = utils.get(guild.categories, name="tickets")
+                tickets_category = utils.get(guild.categories, name=EDIT_ME.ticket_channel_category)
                 if not tickets_category:
-                    tickets_category = await guild.create_category("tickets")
+                    tickets_category = await guild.create_category(EDIT_ME.ticket_channel_category)
 
                 overwrites = {
                     guild.default_role: PermissionOverwrite(read_messages=False),
@@ -254,7 +254,7 @@ class Buttons(ui.View):
                     category=tickets_category
                 )
                 
-                staff_role = utils.get(guild.roles, name="STAFF")
+                staff_role = utils.get(guild.roles, name=EDIT_ME.staff_role_)
                 welcome_embed = Embed(
                     title="New Support Ticket",
                     description=f"Welcome {interaction.user.mention}! Please describe your issue and a staff member will assist you shortly.",
