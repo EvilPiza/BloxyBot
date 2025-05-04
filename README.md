@@ -14,7 +14,6 @@ This is a Discord bot designed to manage support tickets within a server. It all
 
 - Python 3.8 or higher
 - `discord.py` library (version 2.0 or higher)
-- A Discord bot (obviously)
 
 ## Installation
 
